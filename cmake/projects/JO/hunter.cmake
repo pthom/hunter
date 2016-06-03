@@ -12,11 +12,11 @@ hunter_add_version(
     PACKAGE_NAME
     JO
     VERSION
-    "1.0.0"
+    "1.0.0-p0"
     URL
-    "https://github.com/headupinclouds/JO/archive/v1.0.0.tar.gz"
+    "https://github.com/headupinclouds/JO/archive/v1.0.0-p0.tar.gz"
     SHA1
-    047e8329fd2f397f479479c5495815cec1fa418f  
+    fbcf2199314eeec8d713c29ceff68b1fc17d7932
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
