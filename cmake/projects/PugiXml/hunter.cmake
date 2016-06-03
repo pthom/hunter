@@ -12,11 +12,11 @@ hunter_add_version(
     PACKAGE_NAME
     PugiXml
     VERSION
-    "1.0.0-p0"
+    "1.0.0-p1"
     URL
-    "https://github.com/headupinclouds/PugiXml/archive/v1.0.0-p0.tar.gz"
+    "https://github.com/headupinclouds/PugiXml/archive/v1.0.0-p1.tar.gz"
     SHA1
-    0beb7d1550020a06901d0a168c30cdb81c6f4f0e    
+    f513d8b19c05f30e0f4bc12875faee2f9b82dd51    
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
