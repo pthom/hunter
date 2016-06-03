@@ -13,11 +13,11 @@ hunter_add_version(
     PACKAGE_NAME
     LZ4
     VERSION
-    "1.0.0"
+    "1.0.0-p0"
     URL
-    "https://github.com/headupinclouds/LZ4/archive/v1.0.0.tar.gz"
+    "https://github.com/headupinclouds/LZ4/archive/v1.0.0-p0.tar.gz"
     SHA1
-    c4b54ccbec55574caaef2dbad1999be137ba65b7
+    bb813ee90c535148c4eecbed562f59dfa751063e
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)

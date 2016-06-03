@@ -12,11 +12,11 @@ hunter_add_version(
     PACKAGE_NAME
     STB
     VERSION
-    "1.0.0"
+    "1.0.0-p0"
     URL
-    "https://github.com/headupinclouds/STB/archive/v1.0.0.tar.gz"
+    "https://github.com/headupinclouds/STB/archive/v1.0.0-p0.tar.gz"
     SHA1
-    7438574f6b8b4291c55d4f02193e2728ffbd7f75
+    d52635dff8644783423250d1f43c1015524ac033
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
