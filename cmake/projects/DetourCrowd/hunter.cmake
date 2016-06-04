@@ -16,7 +16,7 @@ hunter_add_version(
     URL
     "https://github.com/hunter-packages/DetourCrowd/archive/v1.0.0-p0.tar.gz"
     SHA1
-    8e6efbcffa0eb958a37ef32c4c262486fd332c28
+    628a60a9652de12acd7b814d560a82eca0b5087e
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
