@@ -12,11 +12,11 @@ hunter_add_version(
     PACKAGE_NAME
     DetourTileCache
     VERSION
-    "1.0.0"
+    "1.0.0-p0"
     URL
-    "https://github.com/hunter-packages/DetourTileCache/archive/v1.0.0.tar.gz"
+    "https://github.com/hunter-packages/DetourTileCache/archive/v1.0.0-p0.tar.gz"    
     SHA1
-    fa7997e79531ddc0ae21c988f47ce1bf258e2463
+    8e6efbcffa0eb958a37ef32c4c262486fd332c28
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
