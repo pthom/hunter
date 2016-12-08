@@ -17,6 +17,17 @@ hunter_add_version(
     PACKAGE_NAME
     OpenCV
     VERSION
+    "3.1.0-patched-floodfill"
+    URL
+    "https://github.com/Ubiquite/opencv/archive/v3.1.0-patched-floodFill.tar.gz"
+    SHA1
+    28880241935bd431b8e040c4985e21dc0d0b094e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
     "3.1.0-p2"
     URL
     "https://github.com/hunter-packages/opencv/archive/3.1.0-p2.tar.gz"
