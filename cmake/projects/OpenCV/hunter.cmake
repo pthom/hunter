@@ -17,6 +17,17 @@ hunter_add_version(
     PACKAGE_NAME
     OpenCV
     VERSION
+    "3.1.0-patched-ivs-2"
+    URL
+    "https://github.com/Ubiquite/opencv/archive/v3.1.0-patch-ivs-2.tar.gz"
+    SHA1
+    71fd3207d027deba5f5fdf53d3d697358e086147
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
     "3.1.0-patched-floodfill"
     URL
     "https://github.com/Ubiquite/opencv/archive/v3.1.0-patched-floodFill.tar.gz"
