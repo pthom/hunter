@@ -11,26 +11,36 @@ environment:
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\magnum
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\magnum
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\magnum
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\magnum
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\magnum
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: mingw is not supported by this package
+    # Since corrade (which is a dependency) does not build under mingw
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\magnum
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\magnum
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: msys is not supported by this package
+    # Since corrade (which is a dependency) does not build under msys
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\magnum
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
 install:
   # Python 3
