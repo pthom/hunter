@@ -1,34 +1,16 @@
-# Copied from https://github.com/mosra/magnum-examples/blob/master/src/primitives/CMakeLists.txt
-#
-#   This file is part of Magnum.
-#
-#   Original authors — credit is appreciated but not required:
-#
-#       2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 —
-#           Vladimír Vondruš <mosra@centrum.cz>
-#
-#   This is free and unencumbered software released into the public domain.
-#
-#   Anyone is free to copy, modify, publish, use, compile, sell, or distribute
-#   this software, either in source code form or as a compiled binary, for any
-#   purpose, commercial or non-commercial, and by any means.
-#
-#   In jurisdictions that recognize copyright laws, the author or authors of
-#   this software dedicate any and all copyright interest in the software to
-#   the public domain. We make this dedication for the benefit of the public
-#   at large and to the detriment of our heirs and successors. We intend this
-#   dedication to be an overt act of relinquishment in perpetuity of all
-#   present and future rights to this software under copyright law.
-#
-#   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-#   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-#   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-#   THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-#   IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-#   CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
+# Copyright (c) 2015, Ruslan Baratov
+# All rights reserved.
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0)
+
+# Emulate HunterGate:
+# * https://github.com/hunter-packages/gate
+include("../common.cmake")
+
+project(download-magnum)
+
+# The part below is adapted from
+# https://github.com/mosra/magnum-examples/blob/master/src/primitives/CMakeLists.txt
 
 # CMake policies. 0025 needs to be before project(), so putting all there.
 # Use AppleClang instead of Clang on Apple
@@ -55,7 +37,12 @@ if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/../../modules/")
 endif()
 
-find_package(Magnum REQUIRED
+# hunter_package(magnum CMAKE_ARGS WITH_SDL2APPLICATION=ON)
+# set(HUNTER_ALLOW_CONFIG_LOADING YES)
+# hunter_config(magnum CMAKE_ARGS WITH_SDL2APPLICATION=ON)
+hunter_add_package(magnum)
+hunter_add_package(SDL2)
+find_package(Magnum CONFIG REQUIRED
     GL
     MeshTools
     Primitives
