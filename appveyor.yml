@@ -9,28 +9,48 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\corrade
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\corrade
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\corrade
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\corrade
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME : mingw not supported by this package
+    # https://ci.appveyor.com/project/pthom/hunter/build/job/xbvyctllauor9u3l
+    # Error message:
+    # src\Corrade\PluginManager\AbstractManager.cpp:204:13:   required from here
+    # include/c++/bits/ptr_traits.h:133:28:
+    # error: forming pointer to reference type 'Corrade::PluginManager::AbstractManager::Plugin&'
+    #         using rebind = _Up*;
+    #                             ^
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\corrade
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME : msys not supported by this package
+    # Error message:
+    # CMake Error at C:/projects/hunter/_ci/cmake/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake:137 (message):
+    #   Could NOT find Corrade (missing: Utility Interconnect PluginManager TestSuite)
+    #
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\corrade
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
 install:
   # Python 3
