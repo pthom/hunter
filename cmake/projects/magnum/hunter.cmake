@@ -88,7 +88,7 @@ hunter_cmake_args(
         # Build SceneGraph library
         WITH_SCENEGRAPH=ON
         # Build Sdl2Application library
-        WITH_SDL2APPLICATION=OFF
+        WITH_SDL2APPLICATION=ON
         # Build Shaders library
         WITH_SHADERS=ON
         # Build Shapes library
