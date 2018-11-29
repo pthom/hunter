@@ -54,6 +54,7 @@ matrix:
       env: >
         TOOLCHAIN=analyze-cxx17
         PROJECT_DIR=examples/magnum
+        VERBOSE=0
 
     - os: linux
       env: >
