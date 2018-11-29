@@ -37,11 +37,7 @@ if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/../../modules/")
 endif()
 
-# hunter_package(magnum CMAKE_ARGS WITH_SDL2APPLICATION=ON)
-# set(HUNTER_ALLOW_CONFIG_LOADING YES)
-# hunter_config(magnum CMAKE_ARGS WITH_SDL2APPLICATION=ON)
 hunter_add_package(magnum)
-hunter_add_package(SDL2)
 find_package(Magnum CONFIG REQUIRED
     GL
     MeshTools
