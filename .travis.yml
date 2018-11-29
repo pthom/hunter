@@ -60,16 +60,19 @@ matrix:
       env: >
         TOOLCHAIN=sanitize-address-cxx17
         PROJECT_DIR=examples/magnum
+      sudo: true
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
         PROJECT_DIR=examples/magnum
+      sudo: true
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
         PROJECT_DIR=examples/magnum
+      sudo: true
 
     # }
 
