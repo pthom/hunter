@@ -13,9 +13,9 @@ hunter_add_version(
     PACKAGE_NAME
     magnum
     VERSION
-    hunter-v2018.10
+    hunter-v2018.10-fix2
     URL
-    "https://github.com/pthom/magnum/archive/hunter-v2018.10.tar.gz"
+    "https://github.com/pthom/magnum/archive/hunter-v2018.10-fix2.tar.gz"
     SHA1
     6ba92a6cf63692f7e5171cf4d8e79c013df3b74d
 )
