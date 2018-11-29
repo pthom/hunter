@@ -20,15 +20,13 @@ hunter_add_version(
     6ba92a6cf63692f7e5171cf4d8e79c013df3b74d
 )
 
-hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(magnum)
-hunter_download(PACKAGE_NAME magnum)
-
 hunter_cmake_args(
     magnum
     CMAKE_ARGS
         #
         # This is a copy of the default magnum cmake options
+        # except WITH_SDL2APPLICATION=ON
+        # (which is required to build the example app in hunter's CI)
         #
 
         # Include deprecated API in the build
@@ -88,6 +86,7 @@ hunter_cmake_args(
         # Build SceneGraph library
         WITH_SCENEGRAPH=ON
         # Build Sdl2Application library
+        # this is the only difference with the default args (required for the example app)
         WITH_SDL2APPLICATION=ON
         # Build Shaders library
         WITH_SHADERS=ON
@@ -108,3 +107,7 @@ hunter_cmake_args(
         # Build WindowlessEglApplication library
         WITH_WINDOWLESSEGLAPPLICATION=OFF
     )
+
+hunter_pick_scheme(DEFAULT url_sha1_cmake)
+hunter_cacheable(magnum)
+hunter_download(PACKAGE_NAME magnum)
