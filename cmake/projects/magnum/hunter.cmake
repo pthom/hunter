@@ -17,7 +17,7 @@ hunter_add_version(
     URL
     "https://github.com/pthom/magnum/archive/hunter-v2018.10-fix2.tar.gz"
     SHA1
-    6ba92a6cf63692f7e5171cf4d8e79c013df3b74d
+    e979ef0d28134a5944b7933023d68ef9531cdbf3
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
