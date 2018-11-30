@@ -9,6 +9,19 @@ include(hunter_download)
 include(hunter_pick_scheme)
 include(hunter_cmake_args)
 
+
+
+hunter_add_version(
+    PACKAGE_NAME
+    magnum
+    VERSION
+    magnum_hunter_v6
+    URL
+    "https://github.com/pthom/magnum/archive/magnum_hunter_v6.tar.gz"
+    SHA1
+    5cfdf0c5c73b3122b96a71c96e3ca661d49f4adb
+)
+  
 hunter_add_version(
     PACKAGE_NAME
     magnum
