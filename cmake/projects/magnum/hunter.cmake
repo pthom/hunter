@@ -15,23 +15,13 @@ hunter_add_version(
     PACKAGE_NAME
     magnum
     VERSION
-    magnum_hunter_rc1
+    magnum_hunter_rc2
     URL
-    "https://github.com/pthom/magnum/archive/magnum_hunter_rc1.tar.gz"
+    "https://github.com/pthom/magnum/archive/magnum_hunter_rc2.tar.gz"
     SHA1
-    8a08d183ebcf045adee08c747e9e5c2ac2a3e7a5
+    69e0a68a8a8b0b329909cf99c9a8367f73556f27
 )
 
-hunter_add_version(
-    PACKAGE_NAME
-    magnum
-    VERSION
-    magnum_hunter_v21
-    URL
-    "https://github.com/pthom/magnum/archive/magnum_hunter_v21.tar.gz"
-    SHA1
-    cce195976ab1ae721d990406479320d8d277b1c2
-)
 
 # CMAKE_SYSTEM_NAME dependant default options below
 
