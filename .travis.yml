@@ -87,8 +87,8 @@ matrix:
 
     - os: osx
       env: >
-        PROJECT_DIR=examples/corrade
         TOOLCHAIN=ios-nocodesign-9-3
+        PROJECT_DIR=examples/corrade
         CROSS_COMPILE=1
 
     - os: osx
