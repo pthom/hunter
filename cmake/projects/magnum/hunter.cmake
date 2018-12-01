@@ -22,87 +22,176 @@ hunter_add_version(
     cce195976ab1ae721d990406479320d8d277b1c2
 )
 
+# CMAKE_SYSTEM_NAME dependant default options below
+
+if (WIN32)
+    # windows (cf magnum/package/ci/appveyor-desktop.bat)
+    set(MAGNUM_CMAKE_ARGS
+    WITH_AUDIO=ON
+    WITH_SHAPES=ON
+    WITH_SDL2APPLICATION=ON
+    WITH_GLFWAPPLICATION=ON
+    WITH_WINDOWLESSWGLAPPLICATION=ON
+    WITH_WGLCONTEXT=ON
+    WITH_OPENGLTESTER=ON
+    WITH_ANYAUDIOIMPORTER=ON
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_MAGNUMFONTCONVERTER=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=ON
+    WITH_DISTANCEFIELDCONVERTER=ON
+    WITH_FONTCONVERTER=ON
+    WITH_IMAGECONVERTER=ON
+    WITH_GL_INFO=ON
+    WITH_AL_INFO=ON
+    BUILD_TESTS=ON
+    BUILD_GL_TESTS=ON
+    )
+endif()
+
+if (UNIX)
+    # Linux (cf magnum/package/debian/rules)
+    set(MAGNUM_CMAKE_ARGS
+    WITH_AUDIO=ON
+    WITH_GLXAPPLICATION=ON
+    WITH_GLFWAPPLICATION=OFF
+    WITH_SDL2APPLICATION=ON
+    WITH_WINDOWLESSGLXAPPLICATION=ON
+    WITH_GLXCONTEXT=ON
+    WITH_OPENGLTESTER=ON
+    WITH_ANYAUDIOIMPORTER=ON
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_MAGNUMFONTCONVERTER=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=ON
+    WITH_DISTANCEFIELDCONVERTER=ON
+    WITH_IMAGECONVERTER=ON
+    WITH_FONTCONVERTER=ON
+    WITH_GL_INFO=ON
+    WITH_AL_INFO=ON
+    )
+endif()
+
+if (ANDROID)
+    # cf magnum/package/ci/travis-android-arm.sh
+    set(MAGNUM_CMAKE_ARGS
+    TARGET_GLES2=OFF
+
+    WITH_AUDIO=OFF
+    WITH_SHAPES=ON
+    WITH_VK=OFF
+    WITH_ANDROIDAPPLICATION=ON
+    WITH_EGLCONTEXT=ON
+    WITH_ANYAUDIOIMPORTER=OFF
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_MAGNUMFONTCONVERTER=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=OFF
+    WITH_GL_INFO=ON
+    BUILD_TESTS=ON
+    BUILD_GL_TESTS=ON
+)
+endif()
+
+if (APPLE AND NOT IOS)
+    # MACOS / OSX ( cf magnum/package/homebrew/magnum.rb)
+    set(MAGNUM_CMAKE_ARGS
+    WITH_AUDIO=ON
+    WITH_GLFWAPPLICATION=OFF
+    WITH_SDL2APPLICATION=ON
+    WITH_WINDOWLESSCGLAPPLICATION=ON
+    WITH_CGLCONTEXT=ON
+    WITH_OPENGLTESTER=ON
+    WITH_ANYAUDIOIMPORTER=ON
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_MAGNUMFONTCONVERTER=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=ON
+    WITH_DISTANCEFIELDCONVERTER=ON
+    WITH_FONTCONVERTER=ON
+    WITH_IMAGECONVERTER=ON
+    WITH_GL_INFO=ON
+    WITH_AL_INFO=ON
+    )
+endif()
+
+if (IOS)
+    # cf magnum/package/ci/travis-ios-simulator.sh
+    set(MAGNUM_CMAKE_ARGS
+    TARGET_GLES2=OFF
+
+    WITH_AUDIO=ON
+    WITH_SHAPES=ON
+    WITH_VK=OFF
+    WITH_SDL2APPLICATION=ON
+    WITH_WINDOWLESSIOSAPPLICATION=ON
+    WITH_EGLCONTEXT=ON
+    WITH_OPENGLTESTER=ON
+    WITH_ANYAUDIOIMPORTER=ON
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_MAGNUMFONTCONVERTER=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=ON
+    BUILD_STATIC=ON
+    BUILD_TESTS=ON
+    BUILD_GL_TESTS=ON
+    )
+endif()
+
+if (EMSCRIPTEN)
+    # cf magnum/package/archlinux/PKGBUILD-emscripten-webgl2
+    set(MAGNUM_CMAKE_ARGS
+    TARGET_GLES2=OFF
+    WITH_AUDIO=ON
+    WITH_SHAPES=ON
+    WITH_SDL2APPLICATION=ON
+    WITH_WINDOWLESSEGLAPPLICATION=ON
+    WITH_ANYAUDIOIMPORTER=ON
+    WITH_ANYIMAGECONVERTER=ON
+    WITH_ANYIMAGEIMPORTER=ON
+    WITH_ANYSCENEIMPORTER=ON
+    WITH_MAGNUMFONT=ON
+    WITH_OBJIMPORTER=ON
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+    WITH_WAVAUDIOIMPORTER=ON
+    WITH_GL_INFO=ON
+    WITH_AL_INFO=ON
+    BUILD_TESTS=OFF
+    BUILD_GL_TESTS=OFF
+    )
+endif()
 
 
 hunter_cmake_args(
     magnum
     CMAKE_ARGS
-        # Include deprecated API in the build
-        BUILD_DEPRECATED=ON
-        # Build in a way that makes it possible to use multiple thread-local
-        # Magnum contexts
-        BUILD_MULTITHREADED=ON
-        # Build static plugins (default are dynamic)
-        BUILD_PLUGINS_STATIC=OFF
-        # Build static libraries (default are shared)
-        BUILD_STATIC=OFF
-        # Build static libraries and plugins with position-independent code
-        BUILD_STATIC_PIC=ON
-        # Build unit tests
-        BUILD_TESTS=OFF
-
-        # Build AnyAudioImporter plugin
-        WITH_ANYAUDIOIMPORTER=ON
-        # Build AnyImageConverter plugin
-        WITH_ANYIMAGECONVERTER=ON
-        # Build AnyImageImporter plugin
-        WITH_ANYIMAGEIMPORTER=ON
-        # Build AnySceneImporter plugin
-        WITH_ANYSCENEIMPORTER=ON
-        # Build Audio library
-        WITH_AUDIO=ON
-        # Build CglContext library
-        WITH_CGLCONTEXT=ON
-        # Build DebugTools library
-        WITH_DEBUGTOOLS=ON
-        # Build magnum-distancefieldconverter utility
-        WITH_DISTANCEFIELDCONVERTER=ON
-        # Build EglContext library
-        WITH_EGLCONTEXT=OFF
-        # Build magnum-fontconverter utility
-        WITH_FONTCONVERTER=ON
-        # Build GlfwApplication library
-        WITH_GLFWAPPLICATION=OFF
-        # Build GlutApplication library
-        WITH_GLUTAPPLICATION=OFF
-        # Build magnum-gl-info utility
-        WITH_GL_INFO=ON
-        # Build magnum-imageconverter utility
-        WITH_IMAGECONVERTER=ON
-        # Build MagnumFont plugin
-        WITH_MAGNUMFONT=ON
-        # Build MagnumFontConverter plugin
-        WITH_MAGNUMFONTCONVERTER=ON
-        # Build MeshTools library
-        WITH_MESHTOOLS=ON
-        # Build ObjImporter plugin
-        WITH_OBJIMPORTER=ON
-        # Build OpenGLTester library
-        WITH_OPENGLTESTER=ON
-        # Builf Primitives library
-        WITH_PRIMITIVES=ON
-        # Build SceneGraph library
-        WITH_SCENEGRAPH=ON
-        # Build Sdl2Application library
-        WITH_SDL2APPLICATION=ON
-        # Build Shaders library
-        WITH_SHADERS=ON
-        # Build Shapes library
-        WITH_SHAPES=OFF
-        # Build Text library
-        WITH_TEXT=ON
-        # Build TgaImageConverter plugin
-        WITH_TGAIMAGECONVERTER=OFF
-        # Build TgaImporter plugin
-        WITH_TGAIMPORTER=OFF
-        # Build Vk library
-        WITH_VK=OFF
-        # Build WavAudioImporter plugin
-        WITH_WAVAUDIOIMPORTER=OFF
-        # Build WindowlessCglApplication library
-        WITH_WINDOWLESSCGLAPPLICATION=ON
-        # Build WindowlessEglApplication library
-        WITH_WINDOWLESSEGLAPPLICATION=OFF
+    ${MAGNUM_CMAKE_ARGS}
     )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
