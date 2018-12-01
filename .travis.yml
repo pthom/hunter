@@ -86,7 +86,11 @@ matrix:
         PROJECT_DIR=examples/corrade
 
     - os: osx
-      env: PROJECT_DIR=examples/hunter_box_1 TOOLCHAIN=ios-nocodesign-9-3
+      env: >
+        PROJECT_DIR=examples/corrade
+        TOOLCHAIN=ios-nocodesign-9-3
+        CROSS_COMPILE=1
+
     - os: osx
       osx_image: xcode9.4
       env: >
