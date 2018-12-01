@@ -9,6 +9,19 @@ include(hunter_download)
 include(hunter_pick_scheme)
 include(hunter_cmake_args)
 
+
+
+hunter_add_version(
+    PACKAGE_NAME
+    magnum
+    VERSION
+    glyph_retest
+    URL
+    "https://github.com/pthom/magnum/archive/glyph_retest.tar.gz"
+    SHA1
+    59b43b0a798501deb4b6c377aaac6885844588fd
+)
+  
 hunter_add_version(
     PACKAGE_NAME
     magnum
