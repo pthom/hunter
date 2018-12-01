@@ -15,11 +15,11 @@ hunter_add_version(
     PACKAGE_NAME
     magnum
     VERSION
-    magnum_hunter_v8
+    magnum_hunter_v21
     URL
-    "https://github.com/pthom/magnum/archive/magnum_hunter_v8.tar.gz"
+    "https://github.com/pthom/magnum/archive/magnum_hunter_v21.tar.gz"
     SHA1
-    cfecf8038333c395d352fbd4d66401ca023f59c2
+    cce195976ab1ae721d990406479320d8d277b1c2
 )
 
 
