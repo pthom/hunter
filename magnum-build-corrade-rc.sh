@@ -10,4 +10,5 @@ cmake .. \
     -DWITH_TESTSUITE=OFF \
     -DWITH_UTILITY=OFF
 make
-cp src/Corrade/Utility/corrade-rc /usr/local/bin
+mkdir ~/corrade-rc-bin
+cp src/Corrade/Utility/corrade-rc ~/corrade-rc-bin/corrade-rc

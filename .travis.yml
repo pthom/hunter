@@ -140,7 +140,11 @@ install:
   - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
 script:
-  - if [ ! -z ${CROSS_COMPILE+x} ]; then ./magnum-build-corrade-rc.sh; fi # build corrade-rc if cross compiling
+  - | # build corrade-rc if cross compiling
+    if [ ! -z ${CROSS_COMPILE+x} ]; then
+      ./magnum-build-corrade-rc.sh
+      export PATH=$PATH:~/corrade-rc-bin
+    fi
   - python3 ./jenkins.py
 
 # https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
