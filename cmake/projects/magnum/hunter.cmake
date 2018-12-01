@@ -27,12 +27,6 @@ hunter_add_version(
 hunter_cmake_args(
     magnum
     CMAKE_ARGS
-        #
-        # This is a copy of the default magnum cmake options
-        # except WITH_SDL2APPLICATION=ON
-        # (which is required to build the example app in hunter's CI)
-        #
-
         # Include deprecated API in the build
         BUILD_DEPRECATED=ON
         # Build in a way that makes it possible to use multiple thread-local
@@ -48,49 +42,48 @@ hunter_cmake_args(
         BUILD_TESTS=OFF
 
         # Build AnyAudioImporter plugin
-        WITH_ANYAUDIOIMPORTER=OFF
+        WITH_ANYAUDIOIMPORTER=ON
         # Build AnyImageConverter plugin
-        WITH_ANYIMAGECONVERTER=OFF
+        WITH_ANYIMAGECONVERTER=ON
         # Build AnyImageImporter plugin
-        WITH_ANYIMAGEIMPORTER=OFF
+        WITH_ANYIMAGEIMPORTER=ON
         # Build AnySceneImporter plugin
-        WITH_ANYSCENEIMPORTER=OFF
+        WITH_ANYSCENEIMPORTER=ON
         # Build Audio library
-        WITH_AUDIO=OFF
+        WITH_AUDIO=ON
         # Build CglContext library
-        WITH_CGLCONTEXT=OFF
+        WITH_CGLCONTEXT=ON
         # Build DebugTools library
         WITH_DEBUGTOOLS=ON
         # Build magnum-distancefieldconverter utility
-        WITH_DISTANCEFIELDCONVERTER=OFF
+        WITH_DISTANCEFIELDCONVERTER=ON
         # Build EglContext library
         WITH_EGLCONTEXT=OFF
         # Build magnum-fontconverter utility
-        WITH_FONTCONVERTER=OFF
+        WITH_FONTCONVERTER=ON
         # Build GlfwApplication library
         WITH_GLFWAPPLICATION=OFF
         # Build GlutApplication library
         WITH_GLUTAPPLICATION=OFF
         # Build magnum-gl-info utility
-        WITH_GL_INFO=OFF
+        WITH_GL_INFO=ON
         # Build magnum-imageconverter utility
-        WITH_IMAGECONVERTER=OFF
+        WITH_IMAGECONVERTER=ON
         # Build MagnumFont plugin
-        WITH_MAGNUMFONT=OFF
+        WITH_MAGNUMFONT=ON
         # Build MagnumFontConverter plugin
-        WITH_MAGNUMFONTCONVERTER=OFF
+        WITH_MAGNUMFONTCONVERTER=ON
         # Build MeshTools library
         WITH_MESHTOOLS=ON
         # Build ObjImporter plugin
-        WITH_OBJIMPORTER=OFF
+        WITH_OBJIMPORTER=ON
         # Build OpenGLTester library
-        WITH_OPENGLTESTER=OFF
+        WITH_OPENGLTESTER=ON
         # Builf Primitives library
         WITH_PRIMITIVES=ON
         # Build SceneGraph library
         WITH_SCENEGRAPH=ON
         # Build Sdl2Application library
-        # this is the only difference with the default args (required for the example app)
         WITH_SDL2APPLICATION=ON
         # Build Shaders library
         WITH_SHADERS=ON
@@ -107,7 +100,7 @@ hunter_cmake_args(
         # Build WavAudioImporter plugin
         WITH_WAVAUDIOIMPORTER=OFF
         # Build WindowlessCglApplication library
-        WITH_WINDOWLESSCGLAPPLICATION=OFF
+        WITH_WINDOWLESSCGLAPPLICATION=ON
         # Build WindowlessEglApplication library
         WITH_WINDOWLESSEGLAPPLICATION=OFF
     )
