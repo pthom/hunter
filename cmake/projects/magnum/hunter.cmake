@@ -9,8 +9,6 @@ include(hunter_download)
 include(hunter_pick_scheme)
 include(hunter_cmake_args)
 
-
-
 hunter_add_version(
     PACKAGE_NAME
     magnum
@@ -27,30 +25,40 @@ hunter_add_version(
 if (WIN32)
     # windows (cf magnum/package/ci/appveyor-desktop.bat)
     set(MAGNUM_CMAKE_ARGS
-    WITH_AUDIO=ON
+
+    # WITH_AUDIO=OFF because OpenAL hunter package
+    # fails to build under windows
+    # See https://ci.appveyor.com/project/pthom/hunter/builds/20697140/job/03xop04ea11c47vf
+    # CMake Error at C:/projects/hunter/_ci/cmake/share/cmake-3.13/Modules/CheckIncludeFiles.cmake:63 (message):
+    # Unknown arguments:
+    # -D_WIN32_WINNT=0x0502
+    WITH_AUDIO=OFF
+    WITH_ANYAUDIOIMPORTER=OFF
+    WITH_WAVAUDIOIMPORTER=OFF
+    WITH_AL_INFO=ON
+
     WITH_SHAPES=ON
     WITH_SDL2APPLICATION=ON
     WITH_GLFWAPPLICATION=ON
     WITH_WINDOWLESSWGLAPPLICATION=ON
     WITH_WGLCONTEXT=ON
     WITH_OPENGLTESTER=ON
-    WITH_ANYAUDIOIMPORTER=ON
     WITH_ANYIMAGECONVERTER=ON
     WITH_ANYIMAGEIMPORTER=ON
     WITH_ANYSCENEIMPORTER=ON
     WITH_MAGNUMFONT=ON
     WITH_MAGNUMFONTCONVERTER=ON
     WITH_OBJIMPORTER=ON
-    WITH_TGAIMAGECONVERTER=ON
-    WITH_TGAIMPORTER=ON
-    WITH_WAVAUDIOIMPORTER=ON
     WITH_DISTANCEFIELDCONVERTER=ON
     WITH_FONTCONVERTER=ON
     WITH_IMAGECONVERTER=ON
     WITH_GL_INFO=ON
-    WITH_AL_INFO=ON
-    BUILD_TESTS=ON
-    BUILD_GL_TESTS=ON
+
+    WITH_TGAIMAGECONVERTER=ON
+    WITH_TGAIMPORTER=ON
+
+    BUILD_TESTS=OFF
+    BUILD_GL_TESTS=OFF
     )
 endif()
 
@@ -103,8 +111,9 @@ if (ANDROID)
     WITH_TGAIMPORTER=ON
     WITH_WAVAUDIOIMPORTER=OFF
     WITH_GL_INFO=ON
-    BUILD_TESTS=ON
-    BUILD_GL_TESTS=ON
+
+    BUILD_TESTS=OFF
+    BUILD_GL_TESTS=OFF
 )
 endif()
 
@@ -158,8 +167,9 @@ if (IOS)
     WITH_TGAIMPORTER=ON
     WITH_WAVAUDIOIMPORTER=ON
     BUILD_STATIC=ON
-    BUILD_TESTS=ON
-    BUILD_GL_TESTS=ON
+
+    BUILD_TESTS=OFF
+    BUILD_GL_TESTS=OFF
     )
 endif()
 
@@ -182,6 +192,7 @@ if (EMSCRIPTEN)
     WITH_WAVAUDIOIMPORTER=ON
     WITH_GL_INFO=ON
     WITH_AL_INFO=ON
+
     BUILD_TESTS=OFF
     BUILD_GL_TESTS=OFF
     )
