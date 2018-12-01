@@ -43,12 +43,11 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/magnum
 
-    # FIXME: android is not supported by this package
-    # Since corrade (which is a dependency) does not build under iOS
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/magnum
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/magnum
+        CROSS_COMPILE=1
 
     - os: linux
       env: >
@@ -91,13 +90,12 @@ matrix:
         PROJECT_DIR=examples/magnum
         VERBOSE=0
 
-    # FIXME: iOS is not supported by this package
-    # Since corrade (which is a dependency) does not build under iOS
-    # - os: osx
-    #   osx_image: xcode9.4
-    #   env: >
-    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-    #     PROJECT_DIR=examples/magnum
+    - os: osx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+        PROJECT_DIR=examples/magnum
+        CROSS_COMPILE=1
 
     # }
 
@@ -143,6 +141,11 @@ install:
   - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
 script:
+  - | # build corrade-rc if cross compiling
+    if [ ! -z ${CROSS_COMPILE+x} ]; then
+      ./magnum-build-corrade-rc.sh
+      export PATH=$PATH:~/corrade-rc-bin
+    fi
   - python3 ./jenkins.py
 
 # https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
