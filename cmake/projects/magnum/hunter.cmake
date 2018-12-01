@@ -15,13 +15,13 @@ hunter_add_version(
     PACKAGE_NAME
     magnum
     VERSION
-    glyph_retest
+    magnum_hunter_rc1
     URL
-    "https://github.com/pthom/magnum/archive/glyph_retest.tar.gz"
+    "https://github.com/pthom/magnum/archive/magnum_hunter_rc1.tar.gz"
     SHA1
-    59b43b0a798501deb4b6c377aaac6885844588fd
+    8a08d183ebcf045adee08c747e9e5c2ac2a3e7a5
 )
-  
+
 hunter_add_version(
     PACKAGE_NAME
     magnum
