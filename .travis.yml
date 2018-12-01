@@ -89,6 +89,7 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/magnum
+        VERBOSE=0
 
     # FIXME: iOS is not supported by this package
     # Since corrade (which is a dependency) does not build under iOS
