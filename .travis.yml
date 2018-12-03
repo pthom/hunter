@@ -49,10 +49,19 @@ matrix:
         PROJECT_DIR=examples/corrade
         CROSS_COMPILE=1
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/corrade
+    # FIXME:  analyse-cxx17 disabled
+    # Build log : https://travis-ci.org/pthom/hunter/jobs/462944192
+    # corrade/Source/src/Corrade/Utility/Arguments.cpp:455:37:
+    # warning: Array access (from variable 'argv') results in a null pointer dereference
+    #        _values[valueFor->id] = argv[i];
+    #
+    # This is solved in corrade upstream repo, so that this build can be reactivated
+    # when upgrading this package
+    #
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/corrade
 
     - os: linux
       env: >
