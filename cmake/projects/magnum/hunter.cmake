@@ -11,6 +11,19 @@ include(hunter_cmake_args)
 
 
 
+
+
+hunter_add_version(
+    PACKAGE_NAME
+    magnum
+    VERSION
+    hunter_rc3
+    URL
+    "https://github.com/pthom/magnum/archive/hunter_rc3.tar.gz"
+    SHA1
+    990c49b8bb085c395eebe8a46686552767cffb3f
+)
+  
 hunter_add_version(
     PACKAGE_NAME
     magnum
