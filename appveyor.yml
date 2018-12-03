@@ -28,15 +28,28 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\corrade
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\__BIN
+    # FIXME : disable mingw build
+    # Build logs : https://ci.appveyor.com/project/pthom/hunter/builds/20724668/job/qjg087hwcfpnf27m
+    # C:/mingw-w64/x86_64-7.2.0-posix-seh-rt_v5-rev1/mingw64/lib/gcc/x86_64-w64-mingw32/7.2.0/include/c++/bits/ptr_traits.h:133:28:
+    # error: forming pointer to reference type 'Corrade::PluginManager::AbstractManager::Plugin&'
+    #    using rebind = _Up*;
+    # This is due to a bug in gcc 7.2 : https://gcc.gnu.org/bugzilla/show_bug.cgi?id=83226
+    # The info comes from corrade project author : see https://github.com/mosra/magnum/pull/297
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\corrade
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\corrade
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\__BIN
+    # Fixme : disabled msys build
+    # Build logs: https://ci.appveyor.com/project/pthom/hunter/builds/20724668/job/us99hd726383fmey
+    # /Source/src/Corrade/Utility/FileWatcher.cpp:59:14:
+    # error: function 'Corrade::Utility::FileWatcher& Corrade::Utility::FileWatcher::operator=(Corrade::Utility::FileWatcher&&)' defaulted on its redeclaration with an exception-specification that differs from the implicit exception-specification ''
+    # FileWatcher& FileWatcher::operator=(FileWatcher&&)
+    # This can probably also be solved by upgrading the compiler
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\corrade
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
 install:
   # Python 3
